@@ -125,4 +125,64 @@ footer{
 </div>
 
 <section>
-    <h2 style="text-align:center;margin-bottom:50px;">Unsere Loc
+    <h2 style="text-align:center;margin-bottom:50px;">Unsere Location</h2>
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe">
+        <img src="https://images.unsplash.com/photo-1464375117522-1311dd6f1b1a">
+        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf">
+    </div>
+</section>
+
+<section>
+    <div class="info">
+        <h2>Warum ARIG?</h2>
+        <p>
+            Modernste Lichttechnik, professionelle Soundanlage,
+            stilvolles Design und Platz für bis zu 100 Gäste.
+            Perfekt für Geburtstage, Firmenfeiern und exklusive Events.
+        </p>
+    </div>
+</section>
+
+<section>
+    <div class="form-box">
+        <h2 style="text-align:center;margin-bottom:30px;">Event anfragen</h2>
+        <form id="bookingForm">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="E-Mail" required>
+            <input type="date" name="date" required>
+            <select name="guests" required>
+                <option value="">Gästeanzahl</option>
+                <option>Bis 30</option>
+                <option>30–60</option>
+                <option>60–100</option>
+            </select>
+            <textarea name="message" rows="4" placeholder="Weitere Wünsche"></textarea>
+            <button type="submit">Anfrage senden</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+© 2026 ARIG Event Location
+</footer>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+
+    await fetch("HIER-DEINE-WORKER-URL-EINFÜGEN",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(data)
+    });
+
+    alert("Anfrage erfolgreich gesendet!");
+    this.reset();
+});
+</script>
+
+</body>
+</html>
