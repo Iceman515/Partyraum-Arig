@@ -1,10 +1,6 @@
 name = "mein-worker"
-main = "workers-site"
+type = "javascript"
 compatibility_date = "2026-02-18"
 
-# Hier sagst du Wrangler, dass es ein Workers Site Projekt ist
-type = "javascript"
-
 [site]
-bucket = "./public"   # Pfad zu deinem public-Ordner
-entry-point = "workers-site"
+bucket = "./public"
