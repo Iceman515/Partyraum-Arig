@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIG Event Location</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0d0d0d;
+    color:white;
+    overflow-x:hidden;
+}
+
+.hero{
+    height:100vh;
+    background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
+    url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30") center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:3.5rem;
+    letter-spacing:2px;
+    animation:fadeUp 1.5s ease forwards;
+}
+
+.hero p{
+    margin-top:20px;
+    opacity:.8;
+}
+
+section{
+    padding:100px 10%;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:15px;
+    transition:.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+.info{
+    max-width:800px;
+    margin:auto;
+    text-align:center;
+    line-height:1.8;
+}
+
+.form-box{
+    background:#161616;
+    padding:50px;
+    border-radius:20px;
+    max-width:650px;
+    margin:auto;
+    box-shadow:0 0 40px rgba(255,0,100,.2);
+}
+
+form{
+    display:grid;
+    gap:20px;
+}
+
+input,select,textarea{
+    padding:14px;
+    border-radius:8px;
+    border:none;
+    font-size:1rem;
+}
+
+button{
+    padding:15px;
+    border:none;
+    border-radius:8px;
+    background:linear-gradient(45deg,#ff0066,#ff3385);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    background:black;
+    margin-top:100px;
+}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(30px)}
+    to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+    <div>
+        <h1>ARIG Event Location</h1>
+        <p>Exklusive Events • Luxus Ambiente • Unvergessliche Nächte</p>
+    </div>
+</div>
+
+<section>
+    <h2 style="text-align:center;margin-bottom:50px;">Unsere Location</h2>
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe">
+        <img src="https://images.unsplash.com/photo-1464375117522-1311dd6f1b1a">
+        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf">
+    </div>
+</section>
+
+<section>
+    <div class="info">
+        <h2>Warum ARIG?</h2>
+        <p>
+            Modernste Lichttechnik, professionelle Soundanlage,
+            stilvolles Design und Platz für bis zu 100 Gäste.
+            Perfekt für Geburtstage, Firmenfeiern und exklusive Events.
+        </p>
+    </div>
+</section>
+
+<section>
+    <div class="form-box">
+        <h2 style="text-align:center;margin-bottom:30px;">Event anfragen</h2>
+        <form id="bookingForm">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="E-Mail" required>
+            <input type="date" name="date" required>
+            <select name="guests" required>
+                <option value="">Gästeanzahl</option>
+                <option>Bis 30</option>
+                <option>30–60</option>
+                <option>60–100</option>
+            </select>
+            <textarea name="message" rows="4" placeholder="Weitere Wünsche"></textarea>
+            <button type="submit">Anfrage senden</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+© 2026 ARIG Event Location
+</footer>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+
+    await fetch("HIER-DEINE-WORKER-URL-EINFÜGEN",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(data)
+    });
+
+    alert("Anfrage erfolgreich gesendet!");
+    this.reset();
+});
+</script>
+
+</body>
+</html>
